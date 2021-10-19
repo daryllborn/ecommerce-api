@@ -11,8 +11,8 @@ const stripeRoute = require("./routes/stripe");
 
 dotenv.config();
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log("Backend server is running on port: ");
+var listener = app.listen(process.env.PORT || 5000, () => {
+  console.log("Backend server is running on port: " + listener.address().port);
 });
 
 mongoose
@@ -42,8 +42,6 @@ mongoose
 });
 
 app.use(express.json());
-
-
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
